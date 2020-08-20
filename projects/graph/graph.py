@@ -13,25 +13,39 @@ class Graph:
         """
         Add a vertex to the graph.
         """
-        pass  # TODO
+        if vertex_id not in self.vertices:
+            self.vertices[vertex_id] = set()
 
     def add_edge(self, v1, v2):
         """
         Add a directed edge to the graph.
         """
-        pass  # TODO
+        if v1 in self.vertices and v2 in self.vertices:
+            self.vertices[v1].add(v2)
+
 
     def get_neighbors(self, vertex_id):
         """
         Get all neighbors (edges) of a vertex.
         """
-        pass  # TODO
+        return self.vertices[vertex_id]
 
     def bft(self, starting_vertex):
         """
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
+
+    # Create an empty queue and enqueue the starting_vertex 
+    # Create an empty set to track visited verticies
+    # while the queue is not empty:
+    # get current vertex (dequeue from queue)
+    # Check if the current vertex has not been visited:
+    # print the current vertex
+    # Mark the current vertex as visited
+    # Add the current vertex to a visited_set
+    # queue up all the current vertex's neighbors (so we can visit them next)
+
         pass  # TODO
 
     def dft(self, starting_vertex):
@@ -39,6 +53,17 @@ class Graph:
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
+
+    # Create an empty stack and add the starting_vertex 
+    # Create an empty set to track visited verticies
+    # while the stack is not empty:
+    # get current vertex (pop from stack)
+    # Check if the current vertex has not been visited:
+    # print the current vertex
+    # Mark the current vertex as visited
+    # Add the current vertex to a visited_set
+    # push up all the current vertex's neighbors (so we can visit them next
+
         pass  # TODO
 
     def dft_recursive(self, starting_vertex):
