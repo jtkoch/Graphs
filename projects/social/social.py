@@ -1,5 +1,18 @@
 import random
 
+class Queue():
+    def __init__(self):
+        self.queue = []
+    def enqueue(self, value):
+        self.queue.append(value)
+    def dequeue(self):
+        if self.size() > 0:
+            return self.queue.pop(0)
+        else:
+            return None
+    def size(self):
+        return len(self.queue)
+
 class User:
     def __init__(self, name):
         self.name = name
@@ -82,10 +95,23 @@ class SocialGraph:
 
         The key is the friend's ID and the value is the path.
         """
-        visited = {
+        visited = {}
 
-        }
-        
+        q = Queue()
+        q.enqueue([user_id])
+
+        while q.size() > 0:
+            current_path = q.dequeue()
+            current_vertex = current_path[-1]
+
+            if current_vertex not in visited:
+                visited[current_vertex] = current_path
+
+                for neighbor in self.friendships[current_vertex]:
+                    new_path = current_path.copy()
+                    new_path.append(neighbor)
+                    q.enqueue(new_path)
+
         return visited
 
 
